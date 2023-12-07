@@ -5,14 +5,30 @@ O projeto em si será uma rede social básica aonde permitirá aos usuários rea
 
 ## Índice
 
-- [Instalação](#instalação)
-- [Uso](#uso)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
+Principais Funcionalidades
 
-## Instalação
+Login
 
-Forneça instruções claras sobre como instalar e configurar o seu projeto. Inclua requisitos de sistema, dependências e qualquer outra informação necessária.
+Esta tela será responsável por controlar o acesso de usuários à aplicação.
+(Imagem à inserir)
 
-```bash
-npm install  # ou yarn install
+Cadastro
+
+Esta tela será responsável por controlar o cadastro dos usuários.
+(Imagem à inserir)
+
+TimeLine
+
+Esta tela será a tela principal dos usuários após iniciarem sessão.
+(Imagem à inserir)
+
+Diário de Bordo
+
+Dia 06/12/2023
+
+Neste dia eu:
+
+- Iniciei o projeto;
+- Estruturei o arquivon de leitura.
+
+Minha principal dificuldade foi conhecer e utilizar o git e github.
