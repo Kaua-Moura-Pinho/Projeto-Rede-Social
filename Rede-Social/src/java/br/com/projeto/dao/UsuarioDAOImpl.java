@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 import br.com.projeto.model.Usuario;
+import java.sql.SQLException;
 
 public class UsuarioDAOImpl implements GenericDAO{
 
@@ -72,6 +73,43 @@ public class UsuarioDAOImpl implements GenericDAO{
     @Override
     public Boolean alterar(Object object) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public Object logarUsuario(String email, String senha) {
+
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Usuario usuario = null;
+        String sql = "select * from usuario where emailusuario = ? and senhausuario = ?;";
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setString(1, email);
+            stmt.setString(2, senha);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                usuario = new Usuario();
+                usuario.setEmailUsuario(rs.getString("emailusuario"));
+                usuario.setSenhaUsuario(rs.getString("senhausuario"));
+                usuario.setPrimeiroNomeUsuario(rs.getString("primeironomeusuario"));
+                usuario.setSobrenomeUsuario(rs.getString("sobrenomeusuario"));
+                usuario.setTelefoneUsuario(rs.getString("telefoneusuario"));
+                usuario.setGeneroUsuario(rs.getString("generousuario"));
+                usuario.setIdUsuario((rs.getInt("idusuario")));
+
+            }
+        } catch (SQLException ex) {
+            System.out.println("Problemas ao encontrar usuario. ERRO : " + ex.getMessage());
+            ex.printStackTrace();
+
+        } finally {
+            try {
+                ConnectionFactory.closeConnection(conn, stmt, rs);
+            } catch (Exception ex) {
+                System.out.println("Problemas ao fechar os parâmetros de conexão! ERRO: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        }
+        return usuario;
     }
     
 }
